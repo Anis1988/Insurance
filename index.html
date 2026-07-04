@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Issad Risk Solutions Agency</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-wrap">
+          <img alt="Issad logo" src="assets/images/logo-insurance.jpeg" onerror="this.style.display='none'">
+          <p class="agency-tagline">Farmers Insurance Agency</p>
+        </div>
+      </div>
+      <nav class="contact-top">
+        <a class="phone" href="tel:6303358885">📞 630-335-8885</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <h2 class="multi-line">
+            <span class="hl-line">Welcome to</span>
+            <span class="hl-line hl-main">Issad Risk Solutions</span>
+            <span class="hl-line hl-sub">Farmers Insurance Agency</span>
+          </h2>
+          <p class="lead">At Issad Risk Solutions Agency, we believe insurance shouldn't be complicated. We partner with Farmers Insurance to provide you with reliable coverage, competitive rates, and personalized service. Whether you are looking to protect your family, your home, or your business, our agency is dedicated to finding the right risk solutions tailored specifically to your life.</p>
+          <div class="ctas">
+            <a class="btn primary" href="https://agents.farmers.com/il/bolingbrook/ahmed-issad/" target="_blank" rel="noopener">💻 Start Your Quote Online</a>
+            <a class="btn" href="tel:6303358885">📞 Call 630-335-8885</a>
+            <a class="btn" href="#schedule">📅 Schedule Appointment</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote">
+      <div class="container">
+        <h3>Get Your Free Insurance Quote</h3>
+        <p>Choose the option that works best for you to get a fast, customized quote.</p>
+        <ul class="options">
+          <li>💻 Online: <a href="https://agents.farmers.com/il/bolingbrook/ahmed-issad/" target="_blank" rel="noopener">Click Here to Start Your Quote Online</a></li>
+          <li>📞 By Phone: Call us directly at <a href="tel:6303358885">630-335-8885</a></li>
+          <li>📅 By Appointment: <a href="#schedule">Click Here to Schedule an Appointment</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h3>Contact Us</h3>
+        <p>Have questions about an existing policy or need expert guidance? Connect with our team directly.</p>
+        <ul class="contact-list">
+          <li><span class="contact-label">✉️ Email:</span> <a href="mailto:aissad@farmersagent.com">aissad@farmersagent.com</a></li>
+          <li><span class="contact-label">📍 Office:</span> 494 W Boughton Rd, Suite 4B, Bolingbrook, IL 60540</li>
+          <li><span class="contact-label">📞 Phone:</span> 630-335-8885</li>
+          <li><span class="contact-label">📠 Fax:</span> 331-281-1411</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="licensed">
+      <div class="container">
+        <h3>Licensed States</h3>
+        <p>Issad Risk Solutions Agency proudly protects families, properties, and businesses across the following states:</p>
+        <p class="states">Illinois (IL) | Kansas (KS) | California (CA) | Texas (TX) | Ohio (OH) | Pennsylvania (PA) | New York (NY) | New Jersey (NJ)</p>
+      </div>
+    </section>
+
+    <section id="schedule" class="schedule">
+      <div class="container">
+        <h3>Schedule an Appointment</h3>
+        <p>Use the button below to request a time to review your coverage options.</p>
+        <a class="btn primary" href="mailto:aissad@farmersagent.com?subject=Appointment%20Request">Request Appointment by Email</a>
+      </div>
+    </section>
+
+    <section id="insurance-form" class="contact-form-section">
+      <div class="container">
+        <h3>Quick Request</h3>
+        <p>Send us your phone, email and a short description and we'll get back to you.</p>
+        <form id="insuranceForm" class="simple-form">
+          <div class="form-group">
+            <label for="insEmail">Email *</label>
+            <input type="email" id="insEmail" name="insEmail" required>
+          </div>
+
+          <div class="form-group">
+            <label for="insPhone">Phone</label>
+            <input type="tel" id="insPhone" name="insPhone">
+          </div>
+
+          <div class="form-group opt-in">
+            <label for="insSmsOptIn">
+              <input type="checkbox" id="insSmsOptIn" name="insSmsOptIn">
+              &nbsp;By checking this box, I consent to receive SMS messages, which may include promotional material.
+            </label>
+            <p class="sms-disclaimer">I understand that Message and data rates may apply and that I may reply <strong>STOP</strong> to opt-out of future messaging; reply <strong>HELP</strong> for additional messaging help. Message frequency may vary depending on interaction between you and our agents. For more information, please see our <a href="#" class="footer-privacy">Privacy Policy</a>.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="insMessage">Details *</label>
+            <textarea id="insMessage" name="insMessage" rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="btn">Send Request</button>
+          <div id="insuranceFormMessage" class="form-message" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Ourr Sister Brand: Looking for professional tax preparation or accounting?</p>
+      <p>Visit us at <a href="https://issadincometax.com/" target="_blank" rel="noopener">IITA - Tax Consultation & Filing Services</a>.</p>
+      <div class="footer-bottom">
+        <small>&copy; <span id="year"></span> Issad Risk Solutions Agency — Partnered with Farmers Insurance</small>
+        <div>
+          <a href="#" class="footer-privacy" aria-label="Open Privacy Policy">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Privacy Policy Modal -->
+  <div class="modal-backdrop" id="privacyModal" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+      <div class="modal-header">
+        <h2 id="privacyTitle" class="modal-title">Privacy Policy</h2>
+        <button class="modal-close" data-close aria-label="Close">×</button>
+      </div>
+      <div class="modal-body">
+        <p>Farmers Financial Solutions, LLC (FFS) does not accept trading instructions via voice mail, text messages, email, instant messaging, or fax. Please do not transmit orders or instructions regarding an FFS account by email. For your protection, FFS does not accept and act on such instructions. If you wish to enter a buy or sell order immediately, please speak directly with your financial services agent. Emails, faxes, and voicemails may not be monitored daily, or after normal business hours, and cannot be relied upon to timely communicate your wishes.</p>
+        <p>This email communication contains information which is confidential. If you are not the intended recipient of this email, you are hereby notified that any disclosure, copying, distribution or use of its contents is prohibited.</p>
+        <p>Securities offered through Farmers Financial Solutions, LLC. Member FINRA &amp; SIPC.</p>
+        <p>Farmers Financial Solutions, LLC (FFS) does not accept trading instructions via voice mail, text messages, email, instant messaging, or fax. Please do not transmit orders or instructions regarding an FFS account by email. For your protection, FFS does not accept and act on such instructions. If you wish to enter a buy or sell order immediately, please speak directly with your financial services agent. Emails, faxes, and voicemails may not be monitored daily, or after normal business hours, and cannot be relied upon to timely communicate your wishes.</p>
+        <p>This email communication contains information which is confidential. If you are not the intended recipient of this email, you are hereby notified that any disclosure, copying, distribution or use of its contents is prohibited.</p>
+        <h3>SMS and Text Messaging</h3>
+        <p>By opting in to receive SMS messages via our contact form, you consent to receive automated and non-automated SMS/text messages from Issad Risk Solutions Agency, which may include promotional material. Message &amp; data rates may apply. You may reply <strong>STOP</strong> to opt-out of future messaging or reply <strong>HELP</strong> for additional messaging help. Message frequency may vary depending on interaction between you and our agents.</p>
+        <p><strong>SMS Carve-Out:</strong> No opt-in information will be shared with third parties/affiliates for marketing or promotional purposes. All the above categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.</p>
+        <p style="margin-top:12px;font-size:13px;color:var(--muted);">You may close this window by clicking the × button, tapping outside the dialog, or pressing Esc.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
