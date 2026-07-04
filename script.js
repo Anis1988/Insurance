@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded',function(){
       };
 
       // Use the same service/template IDs used in WebTax_v1
-      emailjs.send('service_vak5n9d', 'template_k5uiwck', templateParams)
+      emailjs.send('service_oy49w8s', 'template_8981a74', templateParams)
         .then(function(response) {
           if (msgDiv) {
             msgDiv.classList.remove('error');
