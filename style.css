@@ -3,6 +3,10 @@
   --accent:#3aa6a6; /* muted teal */
   --accent-2:#6b5fa3; /* soft purple */
   --logo-blue:#1e6fb8; /* subtle logo blue */
+  --footer-ad-start:#103554;
+  --footer-ad-end:#1a4e7b;
+  --footer-ad-highlight:rgba(148,215,255,0.2);
+  --footer-ad-text:#dff3ff;
   --logo-blue-soft:rgba(30,111,184,0.12);
   --logo-blue-tint:rgba(30,111,184,0.04);
   --text:#12202a;
@@ -53,6 +57,24 @@ body{font-family:Poppins,Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:
 .contact-label{font-weight:700;color:var(--text);margin-right:8px;display:inline-block}
 .states{font-weight:600;color:var(--brand)}
 .site-footer{display:block;position:relative;z-index:1;background:#fff;border-top:1px solid rgba(15,23,36,0.08);padding:20px 0 26px;color:#12202a}
+.footer-ad{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  margin:0 0 16px;
+  padding:16px 18px;
+  border-radius:14px;
+  background:linear-gradient(120deg, var(--footer-ad-start), var(--footer-ad-end));
+  border:1px solid var(--footer-ad-highlight);
+  box-shadow:0 14px 36px rgba(8,28,50,0.24);
+}
+.footer-ad-inner{display:flex;flex-direction:column;gap:4px}
+.footer-ad-kicker{margin:0;color:#9fd9ff;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700}
+.footer-ad-title{margin:0;color:#ffffff;font-size:24px;line-height:1.1}
+.footer-ad-copy{margin:0;color:var(--footer-ad-text);max-width:720px}
+.footer-ad-btn{white-space:nowrap;font-weight:700;border-color:transparent;background:linear-gradient(90deg,var(--accent),var(--logo-blue));box-shadow:0 10px 26px rgba(30,111,184,0.28)}
+.footer-ad-btn:hover{background:linear-gradient(90deg,var(--logo-blue),var(--accent));box-shadow:0 12px 28px rgba(30,111,184,0.34)}
 .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media(min-width:720px){
   .hero h2{font-size:44px}
@@ -65,6 +87,9 @@ body{font-family:Poppins,Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:
 @media(max-width:520px){
   .brand img{height:64px}
   .hero .lead{font-size:15px}
+  .footer-ad{flex-direction:column;align-items:flex-start}
+  .footer-ad-title{font-size:20px}
+  .footer-ad-btn{width:100%;text-align:center}
   .footer-bottom{flex-direction:column;align-items:flex-start}
 }
 
@@ -89,6 +114,9 @@ body{font-family:Poppins,Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:
 .form-message{margin-top:12px;color:var(--muted);font-weight:600;display:inline-flex;align-items:center;gap:10px}
 .form-message.success{color:#0f5132;background:linear-gradient(90deg,rgba(16,185,129,0.06),rgba(16,185,129,0.04));padding:10px 14px;border-radius:10px;border:1px solid rgba(16,185,129,0.12);box-shadow:0 8px 20px rgba(16,185,129,0.06);animation:popIn .28s ease}
 .form-message.error{color:#6b0716;background:linear-gradient(90deg,rgba(220,53,69,0.04),rgba(220,53,69,0.02));padding:10px 14px;border-radius:10px;border:1px solid rgba(220,53,69,0.08)}
+.form-debug{margin-top:8px;font-size:12px;line-height:1.45;color:#4b5563;word-break:break-word}
+.form-debug.success{color:#0f5132}
+.form-debug.error{color:#8b1d2c}
 .form-message .check-icon{width:20px;height:20px;display:inline-block}
 .form-message .check-icon svg{width:100%;height:100%;stroke:#10b981;stroke-width:3;fill:transparent;stroke-linecap:round;stroke-linejoin:round}
 .form-message.success .check-icon svg{animation:checkDraw .5s ease forwards}

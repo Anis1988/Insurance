@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded',function(){
+
   const y=document.getElementById('year');if(y) y.textContent=new Date().getFullYear();
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{
@@ -22,10 +23,10 @@ document.addEventListener('DOMContentLoaded',function(){
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && privacyModal.getAttribute('aria-hidden') === 'false') closeModal(); });
   }
 
-  // Initialize EmailJS (use same public key as WebTax_v1)
+  // Initialize EmailJS
   try {
     if (typeof emailjs !== 'undefined') {
-      emailjs.init('DVi_ewXBvYF486znT');
+      emailjs.init('01sn-v83Tbcx_hubo');
     }
   } catch (err) {
     console.warn('EmailJS init failed:', err && err.message ? err.message : err);
@@ -101,9 +102,17 @@ document.addEventListener('DOMContentLoaded',function(){
       const email = String(data.insEmail || data.email || data.from_email || '').trim();
       const phone = String(data.insPhone || data.phone || '').trim();
       const details = String(data.insMessage || data.message || '').trim();
+      const submittedAt = new Date().toLocaleString();
+      const contactName = phone ? ('Website Visitor (' + phone + ')') : 'Website Visitor';
       const smsOptIn = String(data.insSmsOptIn || '').toLowerCase() === 'yes';
       const msgDiv = document.getElementById('insuranceFormMessage');
+      const debugDiv = document.getElementById('insuranceFormDebug');
       const submitBtn = insuranceForm.querySelector('button[type="submit"]');
+
+      if (debugDiv) {
+        debugDiv.classList.remove('success', 'error');
+        debugDiv.textContent = '';
+      }
 
       if (!email || !details) {
         if (msgDiv) msgDiv.textContent = 'Please provide your email and a short description.';
@@ -129,22 +138,32 @@ document.addEventListener('DOMContentLoaded',function(){
       const { insSmsOptIn, ...dataWithoutSmsOptIn } = data;
 
       const templateParams = {
-        from_name: 'Issad Risk Solutions (Website)',
-        from_email: email,
+        // Use your own verified sender to avoid DMARC/SPF delivery drops.
+        from_name: 'Issad Farmers Insurance Agency (Website)',
+        from_email: 'issadgroup@hotmail.com',
+        sender_email: email,
         reply_to: email,
+        // Match variable names used in the EmailJS template editor.
+        name: contactName,
+        email: email,
+        title: 'New Insurance Request',
+        time: submittedAt,
         phone: phone,
         message: fieldSummary,
         sms_opt_in: smsOptIn ? 'Yes' : 'No',
         sms_disclaimer: consentNote || 'No SMS opt-in',
-        to_email: 'aissad@farmersagent.com',
+        to_email: 'issadgroup@hotmail.com',
+        to: 'issadgroup@hotmail.com',
+        recipient_email: 'issadgroup@hotmail.com',
         details: details,
+        subject: 'New Insurance Request from Website',
         field_summary: fieldSummary,
-        submitted_at: new Date().toLocaleString(),
+        submitted_at: submittedAt,
         ...dataWithoutSmsOptIn
       };
 
-      // Use the same service/template IDs used in WebTax_v1
-      emailjs.send('service_oy49w8s', 'template_8981a74', templateParams)
+      
+      emailjs.send('service_y71c0v9', 'template_8981a74', templateParams)
         .then(function(response) {
           if (msgDiv) {
             msgDiv.classList.remove('error');
@@ -153,6 +172,16 @@ document.addEventListener('DOMContentLoaded',function(){
               '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
               '<path d="M20 6L9 17l-5-5" fill="none"></path>' +
               '</svg></span><span>Thanks — your request has been sent. We will contact you soon.</span>';
+          }
+          if (debugDiv) {
+            debugDiv.classList.remove('error');
+            debugDiv.classList.add('success');
+            const status = response && typeof response.status !== 'undefined' ? response.status : 'n/a';
+            const text = response && response.text ? response.text : 'OK';
+            const requestId = response && (response.id || response.requestId || response.request_id)
+              ? (response.id || response.requestId || response.request_id)
+              : 'n/a';
+            debugDiv.textContent = 'Delivery debug: status=' + status + ', text=' + text + ', requestId=' + requestId + ', time=' + new Date().toLocaleString();
           }
           insuranceForm.reset();
 
@@ -168,7 +197,16 @@ document.addEventListener('DOMContentLoaded',function(){
           if (msgDiv) {
             msgDiv.classList.remove('success');
             msgDiv.classList.add('error');
-            msgDiv.textContent = 'Sorry, something went wrong. Please try again later or email us directly.';
+            const emailJsError = error && (error.text || error.message || error.status || 'Unknown error');
+            msgDiv.textContent = 'Sorry, something went wrong. EmailJS said: ' + emailJsError;
+          }
+          if (debugDiv) {
+            debugDiv.classList.remove('success');
+            debugDiv.classList.add('error');
+            const status = error && typeof error.status !== 'undefined' ? error.status : 'n/a';
+            const text = error && (error.text || error.message) ? (error.text || error.message) : 'Unknown error';
+            const detailsStr = error && error.details ? String(error.details) : 'n/a';
+            debugDiv.textContent = 'Delivery debug: status=' + status + ', text=' + text + ', details=' + detailsStr + ', time=' + new Date().toLocaleString();
           }
         })
         .finally(() => {
