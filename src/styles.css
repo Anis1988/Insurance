@@ -1,0 +1,36 @@
+@import '../style.css';
+
+.link-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    gap: 10px;
+  }
+
+  .contact-top {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .theme-toggle {
+    padding: 8px 10px;
+  }
+
+  .theme-toggle-text {
+    display: none;
+  }
+
+  .ctas .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .simple-form .btn {
+    width: 100%;
+  }
+}
