@@ -162,19 +162,19 @@ function App() {
           </div>
           <nav className="contact-top" aria-label="Top actions">
             <a className="phone" href="tel:6303358885">630-335-8885</a>
-            <button
-              className="theme-toggle"
-              type="button"
-              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-              aria-pressed={theme === 'dark'}
-              onClick={toggleTheme}
-            >
-              <span className="theme-toggle-icon" aria-hidden="true">{theme === 'dark' ? 'D' : 'L'}</span>
-              <span className="theme-toggle-text">{theme === 'dark' ? 'Dark' : 'Light'}</span>
-            </button>
           </nav>
         </div>
       </header>
+
+      <button
+        className="theme-toggle theme-toggle-floating"
+        type="button"
+        aria-label={`Dark mode ${theme === 'dark' ? 'on' : 'off'}`}
+        aria-pressed={theme === 'dark'}
+        onClick={toggleTheme}
+      >
+        <span className="theme-toggle-text">Dark Mode {theme === 'dark' ? 'ON' : 'OFF'}</span>
+      </button>
 
       <main>
         <section className="hero">
